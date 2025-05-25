@@ -33,7 +33,7 @@ columns = ["ID", "valor1", "valor2", "valor3", "valor4"]
 # Criar DataFrame
 df = spark.createDataFrame(data, columns)
 
-windowSpec = Window.partitionBy("ID")
+# windowSpec = Window.partitionBy("ID")
 
 df = df.withColumn('valor1_OK', F.when(df.valor1 != df.valor3, 0).otherwise(1))\
        .withColumn('valor1_NOK', F.when(df.valor1 != df.valor3, 1).otherwise(0))\
